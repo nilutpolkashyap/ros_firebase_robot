@@ -1,0 +1,36 @@
+<?xml version="1.0" ?>
+<launch>
+  <param command="$(find xacro)/xacro $(find gripper_bot_description)/urdf/gripper_bot.xacro" name="robot_description"/>
+
+  <node args="-param robot_description -urdf -model gripper_bot -x 1.5 -y 0.25 -z 0.055 -Y 3.1415" name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"/>
+
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="paused" value="false"/>
+    <arg name="use_sim_time" value="true"/>
+    <arg name="gui" value="true"/>
+    <arg name="headless" value="false"/>
+    <arg name="debug" value="false"/>
+    <arg name="world_name" value="$(find demo_areana)/worlds/demoworld.world"/>
+  </include>
+
+  <rosparam file="$(find gripper_bot_description)/launch/controller.yaml" command="load"/>
+
+
+<node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" ns="gripper_bot" 
+    args=" 
+    joint_state_controller 
+    arm_joint_position_controller
+    gripper_joint_position_controller"  />
+
+
+
+<node name="robot_state_publisher"  pkg="robot_state_publisher" type="robot_state_publisher"/>
+
+<node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+
+    <param name = "use_gui" value = "False"/>
+    <rosparam param = "/source_list">[/gripper_bot/joint_states]</rosparam>
+
+  </node>
+
+</launch>

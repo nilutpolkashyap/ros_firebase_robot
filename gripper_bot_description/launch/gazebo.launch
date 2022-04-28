@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+<launch>
+  <param command="$(find xacro)/xacro $(find gripper_bot_description)/urdf/gripper_bot.xacro" name="robot_description"/>
+
+  <node args="-param robot_description -urdf -model gripper_bot -x 1.5 -y 0.25 -z 0.055 -Y 3.1415" name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"/>
+  
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="paused" value="false"/>
+    <arg name="verbose" value="true"/>
+    <arg name="use_sim_time" value="true"/>
+    <arg name="gui" value="true"/>
+    <arg name="headless" value="false"/>
+    <arg name="debug" value="false"/>
+    <arg name="world_name" value="$(find demo_areana)/worlds/demoworld.world"/>
+  </include>
+</launch>
