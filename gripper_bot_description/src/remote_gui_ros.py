@@ -8,13 +8,13 @@ from PyQt5.QtWidgets import (QApplication, QWidget)
 from PyQt5.Qt import Qt
 
 firebaseConfig= {
-    "apiKey": "AIzaSyDJ4JZTKlyqcLSD921BkVjZHMB3jUqa4eQ",
-    "authDomain": "phoenix-94e5f.firebaseapp.com",
-    "databaseURL": "https://phoenix-94e5f.firebaseio.com",
-    "projectId": "phoenix-94e5f",
-    "storageBucket": "phoenix-94e5f.appspot.com",
-    "messagingSenderId": "918478582882",
-    "appId": "1:918478582882:web:8cde319e61b1de7cb30d3b"
+    "apiKey": "*************************************",
+    "authDomain": "*************************************",
+    "databaseURL": "*************************************",
+    "projectId": "*************************************",
+    "storageBucket": "*************************************",
+    "messagingSenderId": "*************************************",
+    "appId": "*************************************"
 }
 
 firebase=pyrebase.initialize_app(firebaseConfig)
