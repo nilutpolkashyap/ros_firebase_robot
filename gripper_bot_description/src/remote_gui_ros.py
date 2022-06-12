@@ -40,10 +40,6 @@ class Ui(QtWidgets.QMainWindow):
         self.keyboard.setToolTip('W - Go Front\nX - Go Back\nD - Right Rotate\nA - Left Rotate\nQ - Left Turn\nE - Right Turn\n↑ ↓ - Arm Control')
         self.keyboard.setToolTipDuration(50000)
 
-        # self.light = self.findChild(QPushButton, "light_button")
-        # self.light.setToolTip("TURN LIGHT ON/OFF")
-        # self.light.clicked.connect(self.clickme)
-
         self.front_button = self.findChild(QPushButton, "front_button")
         self.front_button.setToolTip("GO FRONT")
         self.front_button.clicked.connect(self.front_button_clicked)
@@ -113,8 +109,6 @@ class Ui(QtWidgets.QMainWindow):
         print("RIGHT TURN")
 
     def change_angle(self, value):
-        # Change font size of label. Size value could 
-        # be anything consistent with the dimension of label.
         db.child("test").update({"arm":value})
         print(value)
 
@@ -142,18 +136,6 @@ class Ui(QtWidgets.QMainWindow):
         if event.key() == Qt.Key_X:
             db.child("test").update({"command":"BK"})
             print("GO BACK")
-        # if event.key() == Qt.Key_L:
-        #     global light_status
-        #     light_status = not light_status
-        #     if(light_status == True):
-        #         db.child("test").update({"light":1})
-        #         print("LIGHT ON")
-        #     else:
-        #         db.child("test").update({"light":0})
-        #         print("LIGHT OFF")
-
-    # def test_method(self):
-    #     print('Q pressed')
 
 app = QtWidgets.QApplication(sys.argv)
 window = Ui()
