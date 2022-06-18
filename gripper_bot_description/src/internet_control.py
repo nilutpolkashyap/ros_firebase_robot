@@ -136,6 +136,7 @@ while True:
         vel_msg.angular.z = 0
         velocity_publisher.publish(vel_msg)
 
+    # Condition for ZIG ZAG Movement
     elif direction == "ZIGZAG":
         print("ZIGZAG")
         vel_msg.linear.x = 0.5
