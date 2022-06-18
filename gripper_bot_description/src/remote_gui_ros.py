@@ -55,6 +55,7 @@ class Ui(QtWidgets.QMainWindow):
         self.rturn_button = self.findChild(QPushButton, "right_turn_button")
         self.rturn_button.clicked.connect(self.rturn_button_clicked)
 
+        # For adding new button for ZIG ZAG movement
         self.back_button = self.findChild(QPushButton, "zig_zag_button")
         self.back_button.clicked.connect(self.zig_zag_button_clicked)
 
@@ -97,7 +98,8 @@ class Ui(QtWidgets.QMainWindow):
     def rturn_button_clicked(self):
         db.child("test").update({"command": "RT"})
         print("RIGHT TURN")
-
+    
+    # Function for the new button for ZIG ZAG movement
     def zig_zag_button_clicked(self):
         db.child("test").update({"command": "ZIGZAG"})
         print("GO ZIGZAG")
